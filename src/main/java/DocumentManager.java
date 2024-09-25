@@ -19,11 +19,11 @@ public class DocumentManager {
      */
     public Document save(Document document) {
         if (document.getId() == null || !documentStore.containsKey(document.getId())) {
-            // Generate a unique ID and set the created timestamp for new documents
+            // Generate a unique ID and set the [created] timestamp for new documents
             document.setId(UUID.randomUUID().toString());
             document.setCreated(Instant.now());
         } else {
-            // For existing documents, retain the original created field
+            // For existing documents, keep the original [created] field
             Document existingDocument = documentStore.get(document.getId());
             document.setCreated(existingDocument.getCreated());
         }
